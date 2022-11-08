@@ -23,6 +23,10 @@ public class ImagePanel extends JPanel {
         setVisible(true);
     }
 
+    public ImagePanel pushImageToQueue(int[] image) {
+        return this;
+    }
+
     @Override
     public void paint(Graphics g) {
         BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);

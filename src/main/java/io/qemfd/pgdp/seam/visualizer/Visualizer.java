@@ -4,13 +4,13 @@ import javax.swing.*;
 
 public class Visualizer extends JFrame {
 
-    public Visualizer(int[] image, int[] mask) {
+    public Visualizer(int[] image, int[] mask, int width, int height) {
         setTitle("Seam Carving");
-        setLocation(0, 0);
         getContentPane().setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setSize(width, height);
         setVisible(true);
-        add(new ImagePanel(image, mask));
+        add(new ImagePanel(image, mask, width, height));
     }
 }

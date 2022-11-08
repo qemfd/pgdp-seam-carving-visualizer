@@ -2,12 +2,8 @@ package io.qemfd.pgdp.seam.visualizer;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageInputStream;
-import javax.imageio.stream.FileImageOutputStream;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class Main {
@@ -85,5 +81,6 @@ public class Main {
         var mask = maskImage.getRGB(0, 0, maskImage.getWidth(), maskImage.getHeight(), null, 0, maskImage.getWidth());
 
         // Start GUI
+        new Visualizer(input, mask, inputImage.getWidth(), inputImage.getHeight());
     }
 }

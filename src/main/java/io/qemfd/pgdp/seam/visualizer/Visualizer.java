@@ -5,6 +5,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Visualizer extends JFrame {
+	private final ImagePanel panel;
+
 
 	public Visualizer(int[] image, int[] mask, int width, int height) {
 		setTitle("Seam Carving");
@@ -14,7 +16,7 @@ public class Visualizer extends JFrame {
 		setSize(width, height);
 		setVisible(true);
 
-		var panel = new ImagePanel(image, mask, width, height);
+		panel = new ImagePanel(image, mask, width, height);
 		this.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -35,5 +37,9 @@ public class Visualizer extends JFrame {
 			}
 		});
 		add(panel);
+	}
+
+	public void pushImage(int[] image, int width, int height) {
+		panel.pushImageToQueue(image, width, height);
 	}
 }

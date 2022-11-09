@@ -81,6 +81,26 @@ public class Main {
 		var mask = maskImage.getRGB(0, 0, maskImage.getWidth(), maskImage.getHeight(), null, 0, maskImage.getWidth());
 
 		// Start GUI
-		new Visualizer(input, mask, inputImage.getWidth(), inputImage.getHeight());
+		Visualizer viz = new Visualizer(input.clone(), mask.clone(), inputImage.getWidth(), inputImage.getHeight());
+
+
+		SeamCarving carving = new SeamCarving();
+
+		int width = inputImage.getWidth();
+		int height = inputImage.getHeight();
+		while (width > 1) {
+			int[] gradient = new int[width * height];
+			carving.toGradientMagnitude(input, gradient, width, height);
+			int[] gradientWithMask = gradient.clone();
+			carving.combineMagnitudeWithMask(gradientWithMask, mask, width, height);
+			viz.pushImage(gradient, width, height);
+			viz.pushImage(gradientWithMask, width, height);
+
+			int[] carved = carving.shrink(input, mask, width, height, width - 1);
+			width--;
+			viz.pushImage(carved, width, height);
+			viz.pushImage(mask.clone(), width, height);
+		}
+
 	}
 }

@@ -15,10 +15,6 @@ public class SeamCarving {
     public void buildSeams(int[][] seams, long[] seamWeights, int[] gradientMagnitude, int width, int height) {
     }
 
-    public int[] highlightLeastWeightSeam(int[] image, int[] mask, int width, int height) {
-        return new int[0];
-    }
-
     public void removeSeam(int[] seam, int[] image, int height, int oldWidth) {
     }
 
